@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-20 02:47:17.404880",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "warehouse",
+  "qty",
+  "bales_source",
+  "column_break_nnru",
+  "create_bale",
+  "bales_id",
+  "batch",
+  "sub_batch"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "columns": 2,
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "columns": 2,
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "columns": 2,
+   "fieldname": "sub_batch",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Sub Batch"
+  },
+  {
+   "fieldname": "column_break_nnru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fieldname": "create_bale",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Create Bale"
+  },
+  {
+   "columns": 1,
+   "fieldname": "bales_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bales ID",
+   "options": "Bales",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "bales_source",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bales Source",
+   "options": "Bales Source"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-20 20:51:48.447058",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Bales Master Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

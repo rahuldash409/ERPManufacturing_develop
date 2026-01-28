@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "autoname": "format:{workstation}-{spare_part}-{current_status}-{#}",
+ "creation": "2025-11-18 07:21:48.197385",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "spare_entry_reference",
+  "ignored_history",
+  "workstation",
+  "entry_date",
+  "spare_part",
+  "from_warehouse",
+  "to_warehouse",
+  "old_status",
+  "current_status",
+  "next_status",
+  "stock_entry_reference",
+  "is_stock_entry_submitted",
+  "stock_entry_submission_date",
+  "repair_po_reference",
+  "asset_reference",
+  "asset_repair_reference",
+  "service_request_reference",
+  "is_service_request_submitted",
+  "is_service_request_rejected",
+  "item_serial_number",
+  "entry_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "spare_entry_reference",
+   "fieldtype": "Link",
+   "label": "Spare Entry Reference",
+   "options": "Workstation Spare Parts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "old_status",
+   "fieldtype": "Data",
+   "label": "Old Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_status",
+   "fieldtype": "Data",
+   "label": "Current Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_status",
+   "fieldtype": "Data",
+   "label": "Next Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry_reference",
+   "fieldtype": "Link",
+   "label": "Stock Entry Reference",
+   "no_copy": 1,
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "from_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "From Warehouse",
+   "options": "Warehouse",
+   "read_only": 1
+  },
+  {
+   "fieldname": "to_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "To Warehouse",
+   "options": "Warehouse",
+   "read_only": 1
+  },
+  {
+   "fieldname": "entry_details",
+   "fieldtype": "Small Text",
+   "label": "Entry Details"
+  },
+  {
+   "fieldname": "entry_date",
+   "fieldtype": "Date",
+   "label": "Entry Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "spare_part",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Spare Part",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Spare Parts\"]]",
+   "options": "Item",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "repair_po_reference",
+   "fieldtype": "Link",
+   "label": "Repair PO Reference",
+   "options": "Purchase Order"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_stock_entry_submitted",
+   "fieldtype": "Check",
+   "label": "Is Stock Entry Submitted",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry_submission_date",
+   "fieldtype": "Date",
+   "label": "Stock Entry Submission Date",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_serial_number",
+   "fieldtype": "Link",
+   "label": "Item Serial Number",
+   "options": "Serial No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "asset_reference",
+   "fieldtype": "Link",
+   "label": "Asset Reference",
+   "options": "Asset",
+   "read_only": 1
+  },
+  {
+   "fieldname": "asset_repair_reference",
+   "fieldtype": "Link",
+   "label": "Asset Repair Reference",
+   "options": "Asset Repair",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_request_reference",
+   "fieldtype": "Link",
+   "label": "Service Request Reference",
+   "options": "Service Request",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_service_request_submitted",
+   "fieldtype": "Check",
+   "label": "Is Service Request Submitted",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_service_request_rejected",
+   "fieldtype": "Check",
+   "label": "Is Service Request Rejected",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ignored_history",
+   "fieldtype": "Check",
+   "label": "Ignored History",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-27 12:39:45.500835",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Spares Move History",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

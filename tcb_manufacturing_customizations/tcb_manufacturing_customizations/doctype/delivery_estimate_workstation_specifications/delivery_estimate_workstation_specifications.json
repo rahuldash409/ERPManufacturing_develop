@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-04 03:28:14.351682",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "item_bom",
+  "workstation",
+  "item_per_minute",
+  "item_per_hour",
+  "item_per_day",
+  "total_working_hours",
+  "days_to_complete_the_order",
+  "workstation_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_bom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "item_per_minute",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Item/Minute"
+  },
+  {
+   "fieldname": "item_per_hour",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Item/Hour"
+  },
+  {
+   "fieldname": "days_to_complete_the_order",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Day(s) To Complete The Order"
+  },
+  {
+   "fetch_from": "workstation.total_working_hours",
+   "fieldname": "total_working_hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Working Hours"
+  },
+  {
+   "fetch_from": "workstation.status",
+   "fieldname": "workstation_status",
+   "fieldtype": "Select",
+   "label": "Workstation Status",
+   "options": "Production\nOff\nIdle\nProblem\nMaintenance\nSetup"
+  },
+  {
+   "fieldname": "item_per_day",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Item/Day"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-24 01:54:22.490253",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Delivery Estimate Workstation Specifications",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

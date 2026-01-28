@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-09 02:50:29.781326",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_storage_warehouse_for_repairables",
+  "default_damaged_items_warehouse",
+  "default_racks_warehouse",
+  "default_repair_warehouse_for_repairables",
+  "default_spares_transfer_source_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_storage_warehouse_for_repairables",
+   "fieldtype": "Link",
+   "label": "Default Storage Warehouse For Repairables",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_repair_warehouse_for_repairables",
+   "fieldtype": "Link",
+   "label": "Default Repair Warehouse For Repairables",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_spares_transfer_source_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Spares Transfer Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_racks_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Racks Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_damaged_items_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Damaged Items Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-12-20 04:36:18.459692",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Workstation Spares Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

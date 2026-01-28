@@ -1,0 +1,161 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-17 11:09:53.957075",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "slitec_section",
+  "item",
+  "qty",
+  "sub_batch",
+  "column_break_ocqv",
+  "slitted_good_qty",
+  "slitec_dialog_entry",
+  "roll_cut_lengths",
+  "section_break_xkly",
+  "warehouse",
+  "workstation",
+  "item_name",
+  "operation",
+  "column_break_wvin",
+  "material_consumed",
+  "wastage_qty",
+  "wastage_qty_in_item_uom",
+  "batch",
+  "process_loss"
+ ],
+ "fields": [
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "sub_batch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub Batch"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Material Consumed"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "material_consumed",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Machine Consumption"
+  },
+  {
+   "depends_on": "eval:doc.workstation!==\"Segregation\"",
+   "fieldname": "wastage_qty",
+   "fieldtype": "Float",
+   "label": "Wastage Qty (Pounds)"
+  },
+  {
+   "depends_on": "eval:doc.workstation!==\"Segregation\"",
+   "fieldname": "wastage_qty_in_item_uom",
+   "fieldtype": "Float",
+   "label": "Wastage Qty in Item UOM"
+  },
+  {
+   "fieldname": "column_break_wvin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "process_loss",
+   "fieldtype": "Float",
+   "label": "Process Loss"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "roll_cut_lengths",
+   "fieldtype": "Small Text",
+   "label": "Roll Cut Lengths",
+   "read_only": 1
+  },
+  {
+   "description": "AUTO CALCULATED. DO NOT CHANGE",
+   "fieldname": "slitted_good_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Slitted Good Qty",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.operation===\"Slitting\"",
+   "fieldname": "slitec_section",
+   "fieldtype": "Section Break",
+   "label": "Slitec"
+  },
+  {
+   "fieldname": "column_break_ocqv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "description": "Click this button to enter the cut-lengths",
+   "fieldname": "slitec_dialog_entry",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Slitec Dialog Entry (Click Here)"
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Operation",
+   "options": "Operation"
+  },
+  {
+   "fieldname": "section_break_xkly",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-07 11:38:22.683439",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Job Card Material Consumption Slitting",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

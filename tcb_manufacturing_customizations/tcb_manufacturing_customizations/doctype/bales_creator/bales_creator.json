@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-12-21 13:15:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_zwmx",
+  "item_code",
+  "sg_item_code",
+  "naming_series",
+  "opening_stock",
+  "bales_source",
+  "column_break_huoh",
+  "item_name",
+  "number_of_bales",
+  "material_receipts",
+  "section_break_rgxf",
+  "warehouse",
+  "column_break_vqmo",
+  "sg_warehouse",
+  "raw_material_warehouse",
+  "section_break_armv",
+  "items",
+  "section_break_ceif",
+  "total_qty",
+  "column_break_refs",
+  "stock_entry",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_zwmx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Packed Item",
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"packaged ad*star bags\"]]",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Int",
+   "label": "Total Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_rgxf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vqmo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Warehouse from which raw materials will be issued during Bale creation",
+   "fieldname": "raw_material_warehouse",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Raw Material Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_break_armv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Bales Creator Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ceif",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_huoh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "BC-.YYYY.-.MM.-.####"
+  },
+  {
+   "fieldname": "column_break_refs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Material Receipt Stock Entry",
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Bales Creator",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "number_of_bales",
+   "fieldtype": "Int",
+   "label": "Number of Bales"
+  },
+  {
+   "default": "1",
+   "fieldname": "opening_stock",
+   "fieldtype": "Check",
+   "label": "Opening Stock",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bales_source",
+   "fieldtype": "Link",
+   "label": "Bales Source",
+   "options": "Bales Source"
+  },
+  {
+   "description": "Include batches from these stock entries",
+   "fieldname": "material_receipts",
+   "fieldtype": "Table MultiSelect",
+   "label": "Material Receipts",
+   "options": "Bales Creator Material Receipt"
+  },
+  {
+   "fieldname": "sg_item_code",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "SG Item Code",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"segregated ad*star bags\"]]",
+   "options": "Item"
+  },
+  {
+   "fieldname": "sg_warehouse",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "SG Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-12 10:44:48.472986",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Bales Creator",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

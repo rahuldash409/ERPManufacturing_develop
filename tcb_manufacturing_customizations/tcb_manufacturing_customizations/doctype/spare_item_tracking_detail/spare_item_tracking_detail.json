@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{workstation}-{spare_part}-{####}",
+ "creation": "2025-11-11 05:57:41.911840",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workstation",
+  "source_warehouse",
+  "target_warehouse",
+  "spare_part",
+  "spare_part_item_name",
+  "spare_qty",
+  "date_of_installation",
+  "status",
+  "dispose_replacement_date",
+  "maintenance_start_date",
+  "maintenance_responsible_party",
+  "maintenance_end_date",
+  "maintenance_days",
+  "service_life_after_repair",
+  "service_life_days",
+  "stock_entry_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Warehouse",
+   "link_filters": "[[\"Warehouse\",\"custom_is_spares_warehouse\",\"=\",1],[\"Warehouse\",\"is_group\",\"=\",0]]",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.status != 'Disposed'",
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "link_filters": "[[\"Warehouse\",\"custom_is_spares_warehouse\",\"=\",1],[\"Warehouse\",\"is_group\",\"=\",0]]",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "spare_part",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Spare Part",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Spare Parts\"]]",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "spare_part.item_name",
+   "fieldname": "spare_part_item_name",
+   "fieldtype": "Data",
+   "label": "Spare Part Item Name"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "spare_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Spare Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_installation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Installation",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.status=='Disposed'",
+   "fieldname": "dispose_replacement_date",
+   "fieldtype": "Date",
+   "label": "Dispose/Replacement Date",
+   "mandatory_depends_on": "eval:doc.status=='Disposed'"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "In Use\nUnder Maintenance\nDisposed\nOther",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "depends_on": "eval:doc.status=='Disposed'",
+   "fieldname": "service_life_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Service Life (Days)",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_start_date",
+   "fieldtype": "Date",
+   "label": "Maintenance Start Date",
+   "mandatory_depends_on": "eval:doc.status == 'Under Maintenance'"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_end_date",
+   "fieldtype": "Date",
+   "label": "Maintenance End Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "maintenance_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Maintenance Days",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "service_life_after_repair",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Service Life After Repair",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "stock_entry_reference",
+   "fieldtype": "Link",
+   "label": "Stock Entry Reference",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "maintenance_responsible_party",
+   "fieldtype": "Data",
+   "label": "Maintenance Responsible Party"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-14 01:44:35.986116",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Spare Item Tracking Detail",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SR-{supplier}-{#####}",
+ "creation": "2025-12-21 02:22:10.186475",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1f30",
+  "supplier",
+  "service_reference",
+  "column_break_custom",
+  "date",
+  "schedule_date",
+  "po_reference",
+  "amended_from",
+  "spare_parts_reference",
+  "asset_repair_reference",
+  "section_break_qooq",
+  "service_request_item_details",
+  "remarks",
+  "po_created"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1f30",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "schedule_date",
+   "fieldtype": "Date",
+   "label": "Required By"
+  },
+  {
+   "fieldname": "service_request_item_details",
+   "fieldtype": "Table",
+   "label": "Service Request Item Details",
+   "options": "Service Request Detail"
+  },
+  {
+   "fieldname": "service_reference",
+   "fieldtype": "Data",
+   "label": "Service Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_custom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "po_created",
+   "fieldtype": "Check",
+   "label": "PO Created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "po_reference",
+   "fieldtype": "Link",
+   "label": "Purchase Order Reference",
+   "no_copy": 1,
+   "options": "Purchase Order",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "spare_parts_reference",
+   "fieldtype": "Link",
+   "label": "Spare Parts Reference",
+   "no_copy": 1,
+   "options": "Workstation Spare Parts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_qooq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "asset_repair_reference",
+   "fieldtype": "Link",
+   "label": "Asset Repair Reference",
+   "options": "Asset Repair",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Purchase Order",
+   "link_fieldname": "custom_po_reference"
+  },
+  {
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "custom_another_stock_entry_reference"
+  }
+ ],
+ "modified": "2025-12-26 01:45:09.536422",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Service Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

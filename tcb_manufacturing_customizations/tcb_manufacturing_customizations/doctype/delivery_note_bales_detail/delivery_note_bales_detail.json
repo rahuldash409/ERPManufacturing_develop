@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "creation": "2025-12-23 12:00:00",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bale",
+  "item",
+  "qty",
+  "column_break_bfab",
+  "batch_count",
+  "delivery_note",
+  "dn_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "bale",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bale",
+   "options": "Bales",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "batch_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Batch Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bfab",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dn_item",
+   "fieldtype": "Data",
+   "label": "DN Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Data",
+   "label": "Delivery Note",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-15 04:34:04.399893",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Delivery Note Bales Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

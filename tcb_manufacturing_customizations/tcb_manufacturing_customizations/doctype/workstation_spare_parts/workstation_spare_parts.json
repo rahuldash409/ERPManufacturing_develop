@@ -1,0 +1,181 @@
+{
+ "actions": [],
+ "autoname": "format:{workstation}-{spare_part}-{###}",
+ "creation": "2025-09-30 03:45:42.180134",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "workstation",
+  "spare_part",
+  "item_serial_number",
+  "spare_name",
+  "spare_status",
+  "date_of_installation",
+  "service_life_days",
+  "amended_from",
+  "other_workstation_spare_link",
+  "column_break_rfuc",
+  "source_warehouse",
+  "target_warehouse",
+  "asset_reference"
+ ],
+ "fields": [
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.status=='Consumed'",
+   "fieldname": "service_life_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Service Life (Days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Workstation",
+   "options": "Workstation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Workstation Spare Parts",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "spare_part",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Spare Part",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Repairable Spares\"]]",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date_of_installation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Of Installation"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "item_serial_number",
+   "fieldtype": "Link",
+   "label": "Item Serial Number",
+   "no_copy": 1,
+   "options": "Serial No",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source  Warehouse",
+   "link_filters": "[[\"Warehouse\",\"is_group\",\"=\",0]]",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "link_filters": "[[\"Warehouse\",\"is_group\",\"=\",0]]",
+   "options": "Warehouse"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Installation Pending",
+   "fieldname": "spare_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Spare Status",
+   "no_copy": 1,
+   "options": "Installation Pending\nIn Use\nScrapped\nDamaged\nSent For Repair\nAvailable\nUsed In another Workstation",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "other_workstation_spare_link",
+   "fieldtype": "Link",
+   "label": "Other Workstation Spare Link ",
+   "no_copy": 1,
+   "options": "Workstation Spare Parts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rfuc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "spare_part.item_name",
+   "fieldname": "spare_name",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Spare Name",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Repairable Spares\"]]",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset_reference",
+   "fieldtype": "Link",
+   "label": "Asset Reference",
+   "options": "Asset",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "custom_stock_item_move_reference"
+  },
+  {
+   "link_doctype": "Spares Move History",
+   "link_fieldname": "spare_entry_reference"
+  },
+  {
+   "link_doctype": "Workstation Spare Parts",
+   "link_fieldname": "other_workstation_spare_link"
+  }
+ ],
+ "modified": "2025-12-27 23:02:54.380317",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Workstation Spare Parts",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

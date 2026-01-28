@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "creation": "2026-01-10 15:00:00",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bale_number",
+  "bale_qty",
+  "packed_item",
+  "item_name",
+  "column_break_2",
+  "packaging_item",
+  "batch_no",
+  "sub_batch",
+  "column_break_3",
+  "batch_qty_used"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "bale_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Bale #",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "packed_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Packed Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "packed_item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "bale_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bale Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 3,
+   "fieldname": "packaging_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Packaging Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "options": "Batch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sub_batch",
+   "fieldtype": "Data",
+   "label": "Sub Batch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "batch_qty_used",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Batch Qty Used",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-10 07:48:46.153314",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Job Card Bales Plan",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "bale_number",
+ "sort_order": "ASC",
+ "states": []
+}

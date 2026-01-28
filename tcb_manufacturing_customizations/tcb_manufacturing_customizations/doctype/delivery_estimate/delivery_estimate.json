@@ -1,0 +1,417 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:DE-{#####}",
+ "creation": "2025-07-24 03:35:21.520507",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "order_priority",
+  "get_sales_orders",
+  "column_break_kwii",
+  "date",
+  "urgent_delivery_dates_and_days_info_section",
+  "process_days",
+  "process_days_including_holidays",
+  "column_break_ubvn",
+  "recommended_delivery_date",
+  "process_days_including_holidays_date",
+  "section_break_oksg",
+  "existing_sales_orders",
+  "item_details_section",
+  "item_to_deliver",
+  "qty_to_deliver",
+  "column_break_pzio",
+  "bom",
+  "calculate_raw_materials",
+  "section_break_aixa",
+  "table_ilpb",
+  "stock_availability_section",
+  "check_stock_availability",
+  "warehouse_wise_stock",
+  "calculate_lead_time",
+  "deficit_item_wise_lead_time",
+  "calculate_procurement_lead_time",
+  "procurement_lead_time_taken_in_days",
+  "section_break_wzuh",
+  "workstation_specifications",
+  "get_item_wise_workstation",
+  "max_workstation_lead_time_in_days",
+  "production_specifications_section",
+  "machine",
+  "bag_width_bw",
+  "days_to_complete_the_order",
+  "column_break_ypuz",
+  "bottom_width_bow",
+  "bags_per_minute",
+  "hours_to_complete_the_order",
+  "production_details_section",
+  "calculate_production_details",
+  "operations_and_workstations",
+  "estimated_operation_completion_time_in_days",
+  "workforce_section",
+  "holiday_list",
+  "shipping_transit_time_days",
+  "employee_leave_list",
+  "get_employee_leave_list",
+  "section_break_oidr",
+  "calculate_delivery_date",
+  "section_break_jsqy",
+  "last_sales_order_delivery_date",
+  "column_break_mcej",
+  "buffer_days_if_needed",
+  "finalising_the_delivery_date_section",
+  "column_break_gxnl",
+  "process_days_after_last_so_delivery",
+  "process_days_including_sales_order_without_holidays_date",
+  "days_and_dates_info_with_holidays_column",
+  "days_with_sales_order_and_holidays_included",
+  "days_with_sales_order_and_holidays_included_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "order_priority",
+   "fieldtype": "Select",
+   "label": "Order Priority",
+   "options": "Regular\nUrgent"
+  },
+  {
+   "fieldname": "column_break_kwii",
+   "fieldtype": "Column Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_oksg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "existing_sales_orders",
+   "fieldtype": "Table",
+   "label": "Existing Sales Orders",
+   "options": "Delivery Estimate SO List"
+  },
+  {
+   "fieldname": "get_sales_orders",
+   "fieldtype": "Button",
+   "label": "Get Sales Orders"
+  },
+  {
+   "fieldname": "item_details_section",
+   "fieldtype": "Section Break",
+   "label": "Item Details"
+  },
+  {
+   "fieldname": "item_to_deliver",
+   "fieldtype": "Link",
+   "label": "Item to Deliver",
+   "options": "Item"
+  },
+  {
+   "fieldname": "qty_to_deliver",
+   "fieldtype": "Float",
+   "label": "Qty to Deliver"
+  },
+  {
+   "fieldname": "column_break_pzio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bom",
+   "fieldtype": "Link",
+   "label": "BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "calculate_raw_materials",
+   "fieldtype": "Button",
+   "label": "Calculate Raw Materials"
+  },
+  {
+   "fieldname": "section_break_aixa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_ilpb",
+   "fieldtype": "Table",
+   "options": "Delivery Estimate Raw Materials"
+  },
+  {
+   "fieldname": "stock_availability_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Availability"
+  },
+  {
+   "fieldname": "warehouse_wise_stock",
+   "fieldtype": "Table",
+   "label": "Warehouse Wise Stock",
+   "options": "Delivery Estimate Stock Availability"
+  },
+  {
+   "fieldname": "check_stock_availability",
+   "fieldtype": "Button",
+   "label": "Check Stock Availability"
+  },
+  {
+   "fieldname": "procurement_lead_time_taken_in_days",
+   "fieldtype": "Float",
+   "label": "Procurement Lead Time Taken (in days)"
+  },
+  {
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "label": "Holiday List",
+   "options": "Holiday List"
+  },
+  {
+   "fieldname": "production_specifications_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Production Specifications"
+  },
+  {
+   "fieldname": "bag_width_bw",
+   "fieldtype": "Float",
+   "label": "Bag Width (BW)"
+  },
+  {
+   "fieldname": "column_break_ypuz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bottom_width_bow",
+   "fieldtype": "Float",
+   "label": "Bottom Width (BOW)"
+  },
+  {
+   "fieldname": "bags_per_minute",
+   "fieldtype": "Data",
+   "label": "Bags Per Minute"
+  },
+  {
+   "fieldname": "machine",
+   "fieldtype": "Link",
+   "label": "Machine",
+   "options": "Machine"
+  },
+  {
+   "fieldname": "days_to_complete_the_order",
+   "fieldtype": "Float",
+   "label": "Days to Complete the Order"
+  },
+  {
+   "fieldname": "hours_to_complete_the_order",
+   "fieldtype": "Float",
+   "label": "Hours to Complete the Order"
+  },
+  {
+   "fieldname": "workforce_section",
+   "fieldtype": "Section Break",
+   "label": "Workforce"
+  },
+  {
+   "fieldname": "shipping_transit_time_days",
+   "fieldtype": "Float",
+   "label": "Shipping Transit Time (Days)"
+  },
+  {
+   "description": "0 Lead Time Means Same Day Delivery.",
+   "fieldname": "deficit_item_wise_lead_time",
+   "fieldtype": "Table",
+   "label": "Deficit Item wise Lead Time",
+   "options": "Delivery Estimate Deficit Item"
+  },
+  {
+   "fieldname": "calculate_lead_time",
+   "fieldtype": "Button",
+   "label": "Calculate Deficit Items Lead Time"
+  },
+  {
+   "fieldname": "calculate_procurement_lead_time",
+   "fieldtype": "Button",
+   "label": "Calculate Procurement Lead Time"
+  },
+  {
+   "fieldname": "finalising_the_delivery_date_section",
+   "fieldtype": "Section Break",
+   "label": "Finalising the Delivery Date For Regular"
+  },
+  {
+   "fieldname": "calculate_delivery_date",
+   "fieldtype": "Button",
+   "label": "Calculate Delivery Date"
+  },
+  {
+   "fieldname": "process_days",
+   "fieldtype": "Float",
+   "label": "Process Days"
+  },
+  {
+   "fieldname": "column_break_gxnl",
+   "fieldtype": "Column Break",
+   "label": "Days And Dates Info Without Holidays"
+  },
+  {
+   "description": "\n\n      \n",
+   "fieldname": "recommended_delivery_date",
+   "fieldtype": "Date",
+   "label": "Recommended Delivery Date"
+  },
+  {
+   "fieldname": "production_details_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Production Details"
+  },
+  {
+   "fieldname": "operations_and_workstations",
+   "fieldtype": "Table",
+   "label": "Operations and Workstations",
+   "options": "Delivery Estimate Production Specifications"
+  },
+  {
+   "fieldname": "calculate_production_details",
+   "fieldtype": "Button",
+   "label": "Calculate Production Details"
+  },
+  {
+   "fieldname": "estimated_operation_completion_time_in_days",
+   "fieldtype": "Float",
+   "label": "Estimated Operation Completion Time (in Days)"
+  },
+  {
+   "fieldname": "employee_leave_list",
+   "fieldtype": "Table",
+   "label": "Employee Leave List",
+   "options": "Employee Leave List"
+  },
+  {
+   "fieldname": "get_employee_leave_list",
+   "fieldtype": "Button",
+   "label": "Get Employee Leave List"
+  },
+  {
+   "fieldname": "section_break_wzuh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "workstation_specifications",
+   "fieldtype": "Table",
+   "label": "Workstation Specifications",
+   "options": "Delivery Estimate Workstation Specifications"
+  },
+  {
+   "fieldname": "get_item_wise_workstation",
+   "fieldtype": "Button",
+   "label": "Get Item Wise Workstation"
+  },
+  {
+   "description": "From Today date to last sales order  delivery date and process days without holidays",
+   "fieldname": "process_days_after_last_so_delivery",
+   "fieldtype": "Float",
+   "label": "Process Days (with Last Delivery Date)"
+  },
+  {
+   "fieldname": "section_break_oidr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "From Today date to last sales order  delivery date and process days with holidays",
+   "fieldname": "days_with_sales_order_and_holidays_included",
+   "fieldtype": "Float",
+   "label": "Days with Sales Order And Holidays Included"
+  },
+  {
+   "fieldname": "process_days_including_holidays",
+   "fieldtype": "Float",
+   "label": "Process Days Including Holidays"
+  },
+  {
+   "fieldname": "process_days_including_holidays_date",
+   "fieldtype": "Date",
+   "label": "Process Days Including Holidays Date"
+  },
+  {
+   "description": "Including Process days,sales order last delivery date but not included the Holidays from today date",
+   "fieldname": "process_days_including_sales_order_without_holidays_date",
+   "fieldtype": "Date",
+   "label": "Process Days Including Sales Order Without Holidays Date"
+  },
+  {
+   "description": "Including Process days,sales order last delivery date and Holidays from today date",
+   "fieldname": "days_with_sales_order_and_holidays_included_date",
+   "fieldtype": "Date",
+   "label": "Days with Sales Order And Holidays Included Date"
+  },
+  {
+   "fieldname": "max_workstation_lead_time_in_days",
+   "fieldtype": "Float",
+   "label": "Max Workstation Lead Time (in days)"
+  },
+  {
+   "depends_on": "eval:doc.order_priority=='Urgent'",
+   "fieldname": "urgent_delivery_dates_and_days_info_section",
+   "fieldtype": "Section Break",
+   "label": "Urgent Delivery Dates And Days Info"
+  },
+  {
+   "fieldname": "column_break_ubvn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days_and_dates_info_with_holidays_column",
+   "fieldtype": "Column Break",
+   "label": "Days And Dates Info With Holidays"
+  },
+  {
+   "fieldname": "last_sales_order_delivery_date",
+   "fieldtype": "Date",
+   "label": "Last Sales Order Delivery Date"
+  },
+  {
+   "fieldname": "section_break_jsqy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_mcej",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buffer_days_if_needed",
+   "fieldtype": "Float",
+   "label": "Buffer Days (If Needed)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-19 01:20:51.398205",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Delivery Estimate",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

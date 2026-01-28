@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-26 02:37:57.639936",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_order",
+  "linked_production_plan",
+  "production_percentage",
+  "customer",
+  "qty",
+  "delivery_date",
+  "percentage_delivered",
+  "requested_delivery_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Delivery Date"
+  },
+  {
+   "fieldname": "percentage_delivered",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Deliver %"
+  },
+  {
+   "fieldname": "requested_delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Requested Delivery Date"
+  },
+  {
+   "fieldname": "production_percentage",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Prod. %"
+  },
+  {
+   "fieldname": "linked_production_plan",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Prod Plan ",
+   "options": "Production Plan"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-24 08:32:54.199202",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Delivery Estimate SO List",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

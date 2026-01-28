@@ -1,0 +1,341 @@
+<div class="sales-flow-dashboard">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <div class="header-title">
+                <h1>Sales Flow Dashboard</h1>
+                <p class="subtitle">Quotation → Sales Order → Release Order → Delivery Note</p>
+            </div>
+            <div class="header-filters">
+                <div class="filter-group">
+                    <label>Company</label>
+                    <div id="company-filter"></div>
+                </div>
+                <div class="filter-group">
+                    <label>From Date</label>
+                    <div id="from-date-filter"></div>
+                </div>
+                <div class="filter-group">
+                    <label>To Date</label>
+                    <div id="to-date-filter"></div>
+                </div>
+                <div class="filter-group">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary btn-refresh" style="margin-bottom: 1rem !important;" id="refresh-btn">
+                        <svg class="icon icon-sm"><use href="#icon-refresh"></use></svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p>Loading dashboard data...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+        <!-- Flow Summary Cards -->
+        <section class="section flow-cards-section">
+            <h2 class="section-title">
+                <span class="title-icon">📊</span>
+                Sales Pipeline Overview
+            </h2>
+            <div class="flow-cards-container">
+                <!-- Quotation Card -->
+                <div class="flow-card quotation-card" data-doctype="Quotation">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg class="icon"><use href="#icon-file"></use></svg>
+                        </div>
+                        <div class="card-badge">Step 1</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Quotations</h3>
+                        <div class="card-value" id="quotation-count">0</div>
+                        <div class="card-subtitle" id="quotation-value">₹0</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-stats">
+                            <span class="stat open"><span id="quotation-open">0</span> Open</span>
+                            <span class="stat success"><span id="quotation-ordered">0</span> Ordered</span>
+                        </div>
+                    </div>
+                    <div class="card-connector">
+                        <svg viewBox="0 0 40 20" class="connector-arrow">
+                            <path d="M0 10 L30 10 L25 5 M30 10 L25 15" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Sales Order Card -->
+                <div class="flow-card so-card" data-doctype="Sales Order">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg class="icon"><use href="#icon-list"></use></svg>
+                        </div>
+                        <div class="card-badge">Step 2</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Sales Orders</h3>
+                        <div class="card-value" id="so-count">0</div>
+                        <div class="card-subtitle" id="so-value">₹0</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-stats">
+                            <span class="stat warning"><span id="so-pending">0</span> Pending Delivery</span>
+                            <span class="stat info"><span id="so-qty">0</span> Qty</span>
+                        </div>
+                    </div>
+                    <div class="card-connector">
+                        <svg viewBox="0 0 40 20" class="connector-arrow">
+                            <path d="M0 10 L30 10 L25 5 M30 10 L25 15" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Release Order Card -->
+                <div class="flow-card ro-card" data-doctype="Release Order">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg class="icon"><use href="#icon-branch"></use></svg>
+                        </div>
+                        <div class="card-badge">Step 3</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Release Orders</h3>
+                        <div class="card-value" id="ro-count">0</div>
+                        <div class="card-subtitle" id="ro-qty">0 Qty Released</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-stats">
+                            <span class="stat draft"><span id="ro-draft">0</span> Draft</span>
+                            <span class="stat success"><span id="ro-submitted">0</span> Submitted</span>
+                        </div>
+                    </div>
+                    <div class="card-connector">
+                        <svg viewBox="0 0 40 20" class="connector-arrow">
+                            <path d="M0 10 L30 10 L25 5 M30 10 L25 15" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Delivery Note Card -->
+                <div class="flow-card dn-card" data-doctype="Delivery Note">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg class="icon"><use href="#icon-stock"></use></svg>
+                        </div>
+                        <div class="card-badge">Step 4</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Delivery Notes</h3>
+                        <div class="card-value" id="dn-count">0</div>
+                        <div class="card-subtitle" id="dn-value">₹0</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-stats">
+                            <span class="stat success"><span id="dn-qty">0</span> Qty Delivered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Row -->
+        <section class="section charts-section">
+            <div class="charts-grid">
+                <!-- Flow Funnel Chart -->
+                <div class="chart-card funnel-chart-card">
+                    <div class="chart-header">
+                        <h3>Conversion Funnel</h3>
+                        <span class="chart-subtitle">Document Flow Analysis</span>
+                    </div>
+                    <div class="chart-body">
+                        <div id="funnel-chart" class="funnel-chart-container"></div>
+                    </div>
+                </div>
+
+                <!-- Daily Trend Chart -->
+                <div class="chart-card trend-chart-card">
+                    <div class="chart-header">
+                        <h3>Daily Trend</h3>
+                        <span class="chart-subtitle">Documents by Date</span>
+                    </div>
+                    <div class="chart-body">
+                        <div id="trend-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bales & Batch Section -->
+        <section class="section bales-batch-section">
+            <div class="two-column-grid">
+                <!-- Bales Statistics -->
+                <div class="stat-card bales-stat-card">
+                    <div class="stat-header">
+                        <h3>
+                            <span class="header-icon">📦</span>
+                            Bales Overview
+                        </h3>
+                    </div>
+                    <div class="stat-body">
+                        <div class="stat-grid">
+                            <div class="mini-stat-card packed-import">
+                                <div class="mini-stat-icon">📥</div>
+                                <div class="mini-stat-value" id="bales-packed-import">0</div>
+                                <div class="mini-stat-label">Packed Import</div>
+                            </div>
+                            <div class="mini-stat-card packed-inhouse">
+                                <div class="mini-stat-icon">🏭</div>
+                                <div class="mini-stat-value" id="bales-packed-inhouse">0</div>
+                                <div class="mini-stat-label">Packed In House</div>
+                            </div>
+                            <div class="mini-stat-card dispatched">
+                                <div class="mini-stat-icon">🚚</div>
+                                <div class="mini-stat-value" id="bales-dispatched">0</div>
+                                <div class="mini-stat-label">Dispatched</div>
+                            </div>
+                            <div class="mini-stat-card period-dispatched">
+                                <div class="mini-stat-icon">📅</div>
+                                <div class="mini-stat-value" id="bales-period-dispatched">0</div>
+                                <div class="mini-stat-label">Dispatched (Period)</div>
+                            </div>
+                        </div>
+                        <div class="bales-source-chart" id="bales-source-chart"></div>
+                    </div>
+                </div>
+
+                <!-- Batch Consumption Statistics -->
+                <div class="stat-card batch-stat-card">
+                    <div class="stat-header">
+                        <h3>
+                            <span class="header-icon">🔄</span>
+                            Batch Consumption
+                        </h3>
+                    </div>
+                    <div class="stat-body">
+                        <div class="batch-summary">
+                            <div class="batch-summary-item">
+                                <div class="batch-summary-value" id="batch-bundles">0</div>
+                                <div class="batch-summary-label">Bundles Created</div>
+                            </div>
+                            <div class="batch-summary-item">
+                                <div class="batch-summary-value" id="batch-qty">0</div>
+                                <div class="batch-summary-label">Total Qty Consumed</div>
+                            </div>
+                            <div class="batch-summary-item">
+                                <div class="batch-summary-value" id="batch-dns">0</div>
+                                <div class="batch-summary-label">Unique DNs</div>
+                            </div>
+                        </div>
+                        <div class="top-items-list">
+                            <h4>Top Items by Consumption</h4>
+                            <div id="top-items-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Release Order & Recent Activity -->
+        <section class="section activity-section">
+            <div class="two-column-grid">
+                <!-- Release Order Stats -->
+                <div class="stat-card ro-stat-card">
+                    <div class="stat-header">
+                        <h3>
+                            <span class="header-icon">📋</span>
+                            Release Order Stats
+                        </h3>
+                    </div>
+                    <div class="stat-body">
+                        <div id="ro-status-chart"></div>
+                        <div class="ro-conversion-stats">
+                            <div class="conversion-stat">
+                                <span class="conversion-label">Total ROs:</span>
+                                <span class="conversion-value" id="ro-total">0</span>
+                            </div>
+                            <div class="conversion-stat">
+                                <span class="conversion-label">DNs Created:</span>
+                                <span class="conversion-value" id="ro-dn-created">0</span>
+                            </div>
+                        </div>
+                        <div class="recent-list">
+                            <h4>Recent Release Orders</h4>
+                            <div id="recent-ros-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Customers -->
+                <div class="stat-card customers-card">
+                    <div class="stat-header">
+                        <h3>
+                            <span class="header-icon">👥</span>
+                            Top Customers
+                        </h3>
+                    </div>
+                    <div class="stat-body">
+                        <div id="top-customers-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pending Actions Section -->
+        <section class="section pending-section">
+            <h2 class="section-title">
+                <span class="title-icon">⚡</span>
+                Pending Actions
+            </h2>
+            <div class="pending-grid">
+                <!-- Pending Quotations -->
+                <div class="pending-card">
+                    <div class="pending-header quotation-header">
+                        <span class="pending-icon">📝</span>
+                        <span class="pending-title">Open Quotations</span>
+                        <span class="pending-count" id="pending-quotation-count">0</span>
+                    </div>
+                    <div class="pending-body" id="pending-quotations"></div>
+                </div>
+
+                <!-- Pending Sales Orders -->
+                <div class="pending-card">
+                    <div class="pending-header so-header">
+                        <span class="pending-icon">📦</span>
+                        <span class="pending-title">Pending Delivery</span>
+                        <span class="pending-count" id="pending-so-count">0</span>
+                    </div>
+                    <div class="pending-body" id="pending-sos"></div>
+                </div>
+
+                <!-- Draft Release Orders -->
+                <div class="pending-card">
+                    <div class="pending-header ro-header">
+                        <span class="pending-icon">✏️</span>
+                        <span class="pending-title">Draft Release Orders</span>
+                        <span class="pending-count" id="pending-ro-count">0</span>
+                    </div>
+                    <div class="pending-body" id="pending-ros"></div>
+                </div>
+
+                <!-- Draft Delivery Notes -->
+                <div class="pending-card">
+                    <div class="pending-header dn-header">
+                        <span class="pending-icon">🚚</span>
+                        <span class="pending-title">Draft Delivery Notes</span>
+                        <span class="pending-count" id="pending-dn-count">0</span>
+                    </div>
+                    <div class="pending-body" id="pending-dns"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

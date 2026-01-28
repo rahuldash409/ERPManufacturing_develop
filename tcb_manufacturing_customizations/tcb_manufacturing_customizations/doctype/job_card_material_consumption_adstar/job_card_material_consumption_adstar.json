@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-17 11:09:53.957075",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "warehouse",
+  "workstation",
+  "item",
+  "item_name",
+  "qty",
+  "operation",
+  "column_break_wvin",
+  "material_consumed",
+  "wastage_qty",
+  "wastage_qty_in_item_uom",
+  "sub_batch",
+  "batch",
+  "process_loss",
+  "ad_star_section",
+  "manufactured_qty",
+  "column_break_buvq",
+  "batch_fully_used"
+ ],
+ "fields": [
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "sub_batch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub Batch"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Material Consumed"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "depends_on": "eval:doc.batch_fully_used!==\"Yes\"",
+   "fieldname": "material_consumed",
+   "fieldtype": "Float",
+   "label": "Machine Consumption"
+  },
+  {
+   "fieldname": "wastage_qty",
+   "fieldtype": "Float",
+   "label": "Wastage Qty (Pounds)",
+   "read_only_depends_on": "eval:doc.operation===\"Bag Manufacturing\" && (doc.item_name.toLowerCase().includes(\"patch\") || doc.item_name.toLowerCase().includes(\"valve\"))"
+  },
+  {
+   "fieldname": "wastage_qty_in_item_uom",
+   "fieldtype": "Float",
+   "label": "Wastage Qty in Item UOM",
+   "read_only_depends_on": "eval:doc.operation===\"Bag Manufacturing\" && (doc.item_name.toLowerCase().includes(\"patch\") || doc.item_name.toLowerCase().includes(\"valve\"))"
+  },
+  {
+   "fieldname": "column_break_wvin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "process_loss",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Process Loss"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "ad_star_section",
+   "fieldtype": "Section Break",
+   "label": "AD*STAR"
+  },
+  {
+   "description": "How much qty was produced using this batch",
+   "fieldname": "manufactured_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Manufactured Qty",
+   "read_only_depends_on": "eval: doc.operation===\"Bag Manufacturing\" && typeof doc.item_name===\"string\" && (doc.item_name.toLowerCase().indexOf(\"patch\")!==-1 || doc.item_name.toLowerCase().indexOf(\"valve\")!==-1)"
+  },
+  {
+   "fieldname": "batch_fully_used",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Batch Fully Used?",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_buvq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Operation",
+   "options": "Operation"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-07 12:20:52.690645",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Job Card Material Consumption ADSTAR",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,10 @@
+frappe.ui.form.on("Batch",{
+    refresh:function(frm){
+        if(frm.doc.item_name.includes("FG")){
+            frm.set_df_property("custom_segregated_item_qty","hidden",0)
+        }
+        else{
+            frm.set_df_property("custom_segregated_item_qty","hidden",1)
+        }
+    }
+})

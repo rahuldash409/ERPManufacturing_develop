@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:rack_code",
+ "creation": "2025-11-30 22:05:09.271207",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rack_code",
+  "rack_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "rack_code",
+   "fieldtype": "Data",
+   "label": "Rack Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "rack_name",
+   "fieldtype": "Data",
+   "label": "Rack Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-30 22:06:22.044339",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Rack",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-03 16:57:43.788084",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_warehouse",
+  "target_warehouse",
+  "item",
+  "qty",
+  "machine_consumption",
+  "column_break_xcsc",
+  "sub_batch",
+  "batch",
+  "bom",
+  "work_order",
+  "use_multilevel_bom",
+  "slitec_section",
+  "slitec_roll_cut_lengths",
+  "ad_star_section",
+  "produced_good_qty",
+  "packaging_section",
+  "bale"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "precision": "5"
+  },
+  {
+   "fieldname": "sub_batch",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sub Batch"
+  },
+  {
+   "fieldname": "bom",
+   "fieldtype": "Link",
+   "label": "BOM",
+   "options": "BOM"
+  },
+  {
+   "fieldname": "work_order",
+   "fieldtype": "Link",
+   "label": "Work Order",
+   "options": "BOM"
+  },
+  {
+   "default": "0",
+   "fieldname": "use_multilevel_bom",
+   "fieldtype": "Check",
+   "label": "Use Multilevel BOM"
+  },
+  {
+   "fieldname": "column_break_xcsc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "machine_consumption",
+   "fieldtype": "Float",
+   "label": "Machine Consumption"
+  },
+  {
+   "fieldname": "slitec_roll_cut_lengths",
+   "fieldtype": "Small Text",
+   "label": "Slitec Roll Cut-Lengths"
+  },
+  {
+   "fieldname": "slitec_section",
+   "fieldtype": "Section Break",
+   "label": "Slitec"
+  },
+  {
+   "fieldname": "ad_star_section",
+   "fieldtype": "Section Break",
+   "label": "AD STAR"
+  },
+  {
+   "fieldname": "produced_good_qty",
+   "fieldtype": "Float",
+   "label": "Produced Good Qty"
+  },
+  {
+   "fieldname": "packaging_section",
+   "fieldtype": "Section Break",
+   "label": "Packaging"
+  },
+  {
+   "fieldname": "bale",
+   "fieldtype": "Int",
+   "label": "Bale #"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-10 09:47:56.639084",
+ "modified_by": "Administrator",
+ "module": "Tcb Manufacturing Customizations",
+ "name": "Set Batch for Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
