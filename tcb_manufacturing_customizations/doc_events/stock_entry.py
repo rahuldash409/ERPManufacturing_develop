@@ -2408,44 +2408,70 @@ def clear_packaging_materials_on_cancel(stock_entry_doc, method=None):
         
 # TO UPDATE EXPENSES FOR ELECTRICITY AND WAGES
 @frappe.whitelist()
-def updateexpenses(doc,method= None):
-        
+def updateexpenses(doc, method=None):
     try:
-        if doc.additional_costs and doc.stock_entry_type == "Manufacture":
-            total_exp = sum(addcosts.amount for addcosts in doc.additional_costs)
+        elec_ratio = 0
+        wages_ratio = 0
+        total_exp = 0
+        elecacc = None
+        wagesacc = None
+
+        # Only for Manufacture Stock Entry with additional costs
+        if doc.stock_entry_type == "Manufacture" and doc.additional_costs:
+            total_exp = sum(addcost.amount for addcost in doc.additional_costs)
 
             if doc.custom_job_card_reference:
-                jc_workstation = frappe.db.get_value("Job Card",doc.custom_job_card_reference,"workstation")
-                if jc_workstation:
-                    workstation = frappe.get_doc("Workstation",jc_workstation)
-                    eleccost = workstation.hour_rate_electricity or 0
-                    wagescost = workstation.hour_rate_labour or 0
-                    elecacc = workstation.custom_electricity_cost_account
-                    if not elecacc and eleccost:
-                        frappe.throw("Please set Electricity Account in Accounts tab in workstation master and recreate this entry.")
-                    wagesacc = workstation.custom_wages_cost_account 
-                    if not wagesacc and wagescost:
-                        frappe.throw("Please set Wages Account in Accounts tab in workstation master and recreate this entry.")
-                    if eleccost and wagescost:
-                        elecratio = (eleccost/(eleccost+wagescost))
-                        wagesratio = (wagescost/(eleccost+wagescost))
+                jc_workstation = frappe.db.get_value(
+                    "Job Card",
+                    doc.custom_job_card_reference,
+                    "workstation"
+                )
 
-        if elecratio and wagesratio:
+                if jc_workstation:
+                    workstation = frappe.get_doc("Workstation", jc_workstation)
+
+                    elec_cost = workstation.hour_rate_electricity or 0
+                    wages_cost = workstation.hour_rate_labour or 0
+
+                    elecacc = workstation.custom_electricity_cost_account
+                    wagesacc = workstation.custom_wages_cost_account
+
+                    if elec_cost and not elecacc:
+                        frappe.throw(
+                            _("Please set Electricity Account in Accounts tab of Workstation.")
+                        )
+
+                    if wages_cost and not wagesacc:
+                        frappe.throw(
+                            _("Please set Wages Account in Accounts tab of Workstation.")
+                        )
+
+                    if elec_cost and wages_cost:
+                        total_rate = elec_cost + wages_cost
+                        elec_ratio = elec_cost / total_rate
+                        wages_ratio = wages_cost / total_rate
+
+        # Rebuild Additional Costs
+        if elec_ratio and wages_ratio and total_exp:
             doc.additional_costs = []
-            doc.append("additional_costs",{
-                "expense_account":elecacc,
-                "description":"Power Cost as per Work Order / BOM",
-                "amount":total_exp*elecratio
+
+            doc.append("additional_costs", {
+                "expense_account": elecacc,
+                "description": "Power Cost as per Work Order / BOM",
+                "amount": total_exp * elec_ratio
             })
-            doc.append("additional_costs",{
-                "expense_account":wagesacc,
-                "description":"Wages Cost as per Work Order / BOM",
-                "amount":total_exp*wagesratio
+
+            doc.append("additional_costs", {
+                "expense_account": wagesacc,
+                "description": "Wages Cost as per Work Order / BOM",
+                "amount": total_exp * wages_ratio
             })
+
     except Exception as e:
         frappe.log_error(
-            "Electricity and Wages Cost setting error",
-            frappe.get_traceback()
+            title="Electricity and Wages Cost setting error",
+            message=frappe.get_traceback()
         )
         frappe.throw(
-            _("Failed to set Electricity and Wages Cost: {0}").format(str(e)))
+            _("Failed to set Electricity and Wages Cost: {0}").format(str(e))
+        )
